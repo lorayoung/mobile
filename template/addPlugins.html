@@ -1,0 +1,82 @@
+<section class="page-container">
+    <div class="tab-container">
+        <ul class="pligin-tab" ng-init="vm.activeTab=1">
+            <li ng-class="{choosePlugin:vm.activeTab == 1}" ng-click="vm.activeTab = 1">新增插件</li>
+            <li ng-class="{choosePlugin:vm.activeTab == 2}" ng-click="vm.activeTab = 2">我的插件</li>
+        </ul>
+        <div id="plugin-content">
+            <div class="addPlugin" ng-show="vm.activeTab ==1">
+                <form action="" class="plugin-form">
+                    <div class="group clearfix ">
+                        <div class="line fn-left clearfix tag-25">
+                            <label for="" class="fn-left">漏洞名称:</label>
+                            <input type="text" class="input-control height-30 fn-left tag-70">
+                        </div>
+                        <div class="line fn-left clearfix ml-100 tag-25">
+                            <label for="" class="fn-left">漏洞类型:</label>
+                            <select type="text" class="input-control height-30 fn-left tag-70">
+                            <option value="">1</option>
+                            <option value="">2</option>
+                        </select>
+                        </div>
+                        <div class="line fn-left clearfix ml-100 tag-25">
+                            <label for="" class="fn-left">模块类型:</label>
+                            <select type="text" class="input-control height-30 fn-left tag-70">
+                            <option value="">1</option>
+                            <option value="">2</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="group clearfix ">
+                        <div class="line fn-left clearfix tag-25">
+                            <label for="" class="fn-left">影响版本:</label>
+                            <input type="text" class="input-control height-30 fn-left tag-70">
+                        </div>
+                        <div class="line fn-left clearfix ml-100 tag-25">
+                            <label for="" class="fn-left">影响组件:</label>
+                            <input type="text" class="input-control height-30 fn-left tag-70">
+                        </div>
+                        <div class="line fn-left clearfix ml-100 tag-25">
+                            <label for="" class="fn-left">CVE编号:</label>
+                            <input type="text" class="input-control height-30 fn-left tag-70">
+                        </div>
+                    </div>
+                    <div class="group clearfix ">
+                        <div class="line fn-left clearfix tag-25">
+                            <label for="" class="fn-left">危险等级:</label>
+                            <input type="text" class="input-control height-30 fn-left tag-70 ml-100">
+                        </div>
+                        <div class="line fn-left clearfix ml-100 tag-25">
+                            <label for="" class="fn-left">爆发时间:</label>
+                            <input type="text" class="input-control height-30 fn-left tag-70 dateset" readonly ng-click="datePicker()">
+                            <span
+                                class="datepicture"></span>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <label for="">POC内容:</label>
+                        <textarea name="" id="" cols="30" rows="10" class="input-control tag-91 height-80 textarea-set"></textarea>
+                    </div>
+                    <div class="group clearfix">
+                        <div class="line fn-left tag-47">
+                            <label for="">漏洞说明:</label>
+                            <textarea name="" id="" cols="30" rows="10" class="input-control height-80 textarea-set tag-91"></textarea>
+                        </div>
+                        <div class="line fn-left tag-47 ml-21">
+                            <label for="">修复方案:</label>
+                            <textarea name="" id="" cols="30" rows="10" class="input-control height-80 textarea-set tag-91"></textarea>
+                        </div>
+                    </div>
+                    <div class="btn-group form-btn operte">
+                        <button>确认</button>
+                        <button ng-click="reset()">清空</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="myPlugin" ng-show="vm.activeTab ==2">
+                w
+            </div>
+        </div>
+    </div>
+</section>

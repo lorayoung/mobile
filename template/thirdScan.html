@@ -1,0 +1,43 @@
+<section class="page-container">
+    
+    <div class="table-mission table-third">
+        <table>
+            <thead>
+                <tr>
+                    <th>漏洞等级</th>
+                    <th>漏洞名称</th>
+                    <th>漏洞类型</th>
+                    <th>危害性</th>
+                    <th>数量</th>
+                    <th>详情</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="item in list track by $index" class="table-body">
+                <tr>
+                    <td style="padding-left:0.18rem;text-align: center;"><span class="bug-box {{bgcArr[$index]}}">{{item.bugLevel}}</span></td>
+                    <td class="task-name">{{item.holeName}}</td>
+                    <td>{{item.holeType}}</td>
+                    <td>{{item.dangerous}}</td>
+                    <td>{{item.amount}}</td>
+                    <td style="padding-left:5.5%"><span class="single-btn-detail single-detail fn-left" ui-sref="fourthScan"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="page-pagination fn-right clearfix">
+        <div class="fn-left page-total">共计数据:<span>{{count}}条</span></div>
+        <div class="page-page clearfix">
+            <span class="fn-left arrow-left" ng-click="prevPage()"></span>
+            <button class="fn-left mission-btn page-num" ng-click="showPage()">{{choosedNum}}&nbsp;&nbsp;&nbsp;&nbsp;∨</button>
+            <span class="fn-left arrow-right" ng-click="nextPage()"></span>
+            <ul class="page-index">
+                <li ng-repeat="idx in pages track by $index" ng-click="choosedPage($index)"><span></span>{{idx}}&nbsp;/&nbsp;{{p_all_page}}</li>
+            </ul>
+        </div>
+<!--    
+	<li ng-class="{true:'disabled'}[p_current==1]"><a href="javascript:void(0);" ng-click="load_page(p_current-1)">上一页</a></li>	
+	<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]"><a href="javascript:void(0);" ng-click="load_page(page)">{{ page }}</a></li>	
+	<li ng-class="{true:'disabled'}[p_current==p_all_page]"><a href="javascript:void(0);" ng-click="load_page(p_current+1)">下一页</a></li>	-->
+
+    </div>
+</section>

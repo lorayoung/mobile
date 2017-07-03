@@ -1,0 +1,72 @@
+[
+    {
+        "bugLevel": "严重",
+        "holeName": "HttpSlowlorisCheck",
+        "holeType": "Other",
+        "dangerous": "back door",
+        "amount": "2"
+    },
+    {
+        "bugLevel": "低危",
+        "holeName": "HttpSlowlorisCheck",
+        "holeType": "Other",
+        "dangerous": "back door",
+        "amount": "2"
+    },
+    {
+        "bugLevel": "低危",
+        "holeName": "HttpSlowlorisCheck",
+        "holeType": "Other",
+        "dangerous": "back door",
+        "amount": "2"
+    },
+    {
+        "bugLevel": "低危",
+        "holeName": "HttpSlowlorisCheck",
+        "holeType": "Other",
+        "dangerous": "back door",
+        "amount": "2"
+    },
+    {
+        "bugLevel": "低危",
+        "holeName": "HttpSlowlorisCheck",
+        "holeType": "Other",
+        "dangerous": "back door",
+        "amount": "2"
+    },
+    {
+        "bugLevel": "低危",
+        "holeName": "HttpSlowlorisCheck",
+        "holeType": "Other",
+        "dangerous": "back door",
+        "amount": "2"
+    },
+    {
+        "bugLevel": "低危",
+        "holeName": "HttpSlowlorisCheck",
+        "holeType": "Other",
+        "dangerous": "back door",
+        "amount": "2"
+    },
+    {
+        "bugLevel": "低危",
+        "holeName": "HttpSlowlorisCheck",
+        "holeType": "Other",
+        "dangerous": "back door",
+        "amount": "4"
+    },
+    {
+        "bugLevel": "低危",
+        "holeName": "HttpSlowlorisCheck",
+        "holeType": "Other",
+        "dangerous": "back door",
+        "amount": "3"
+    },
+    {
+        "bugLevel": "低危",
+        "holeName": "HttpSlowlorisCheck",
+        "holeType": "Other",
+        "dangerous": "back door",
+        "amount": "4"
+    }
+]

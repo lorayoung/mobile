@@ -1,0 +1,61 @@
+<section class="page-container">
+    <div class="search-container">
+    <div class="search-top">
+        <div class="search-condition clearfix">
+        <div class="search-top-part1">
+            <input type="text" class="input-control height-30 fn-left tag-20" placeholder="周一测试">
+            <input type="text" class="input-control height-30 fn-left tag-20" placeholder="目标URL，测试地址">
+            <select name="" id="" class="input-control height-30 fn-left tag-20 mr-3">
+                <option value="" style="display:none">漏洞名称</option>
+                <option value="">1</option>
+                <option value="">2</option>
+            </select>
+        </div>
+        <div class="search-top-part2" style="display:none">
+            <input type="text" class="input-control height-30 fn-left tag-64  mr-3" placeholder="资产搜索">  
+        </div>
+        <div class="operte">
+             <button ng-click="searchType()">搜索</button>
+        </div>
+         <div class="radio-group fn-right">
+                <label for=""><input type="radio" name="searchType" checked ng-click="searchBug()" id="bugS">漏洞搜索</label>
+                <label for=""><input type="radio" name="searchType" ng-click="searchProperty()" id="propertyS">资产搜索</label>    
+        </div>        
+        </div>
+        <div class="find-result">找到约23条结果&nbsp;(0.36秒)</div>
+    </div>
+    <div class="search-under mt-24">
+        <div class="search-under-container">
+            <div class="search-under-content1">
+            <div class="search-under-header">周一测试</div>
+                <div class="search-under-content-left tag-60">
+                    <ul class="search-under-content-left-ul">
+                        <li>http://www.zcool.com.cn</li>
+                        <li>http://www.zcool.com.cn</li>
+                        <li>http://www.zcool.com.cn</li>
+                        <li>http://www.zcool.com.cn</li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="search-under-content2 clearfix"  style="display:none" ng-repeat="item in portData track by $index" ng-init="outerIndex = $index">
+            <div class="search-under-header">{{item.searchName}}</div>
+                <div class="search-under-content-left tag-52 fn-left">
+                    <ul class="search-under-content-left-ul1">
+                        <li><i class="fa fa-laptop fa-lg logo"></i>{{item.inputPC}} <span class="port-name">端口:80</span></li>
+                        <li><i class="fa fa-map-marker fa-lg logo ml-3"></i>{{item.location}} <span class="port-number">HTTP</span></li>
+                        <li><i class="fa fa-clock-o fa-lg logo"></i>{{item.time}}</li>
+                        <li>端口 
+                            <div class="port-num-5"><span class="port-num" ng-repeat="port in item.ports" ng-click="show(outerIndex,$index)"><i>{{port.portNum}}</i></span></div>
+                        </li>
+                    </ul>
+                    
+                </div>
+                <div class="search-under-content-right fn-left">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>

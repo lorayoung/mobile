@@ -1,0 +1,11 @@
+<section class="page-container">
+    <div class="fourth-header">
+        <span class="bug-box2 blue fn-left">低危</span> <span class="fn-left bug-name">HttpSlowlorisCheck</span><span class="fn-right">数量: <i>{{infoLen}}</i></span>
+    </div>
+    <div class="fourth-content">
+        <ul class="bug-list" ng-repeat="item in tableData track by $index">
+            <li class="clearfix"><span class="fn-left bug-num">{{$index+1}}</span><span class="bug-item fn-left">漏洞路径:</span><span class="bug-content fn-left">{{item.bugUrl}}</span></li>
+            <li class="clearfix"><span class="bug-item fn-left">漏洞详情:</span><span class="bug-content fn-left bug-width">{{item.bugDetail}}</span></li>
+        </ul>
+    </div>
+</section>
