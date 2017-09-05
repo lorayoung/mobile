@@ -1,314 +1,237 @@
-var search = angular.module('searchCtrl',[]);
-search.controller('search',function search($scope){
-    //假数据
-    $scope.portData = [
+var search = angular.module('searchCtrl', []);
+search.controller('search', function ($scope, $state, $http) {
+    $scope.historyList = [];
+
+    $.ajax({
+        url: "../js/search.json",
+        async: false,
+        success: function (res) {
+            console.log(res)
+            $scope.historyList = res.result;
+        }
+    });
+
+    console.log($scope.historyList)
+
+
+    $scope.routeData = [
         {
-            "searchName":"http://www.w3cschool.com.cn",
-            "inputPC":"172.36.64.32",
-            "location":"中国-南京",
-            "time":"2016/05/15 15:19",
-            "ports":[
-                {
-                    "portNum":"80",
-                    "portInfo":[
-                        {
-                            "portIntro":"HTTP/1.1 301 Moved Permanently",
-                            "portDate":"Thu,01 JUN 2017 01:49:11 GMT",
-                            "portServer":"Apache/2.0.63 (Unix) mod_ssl/2.0.63 Open SSL/0.90/PH",
-                            "portPower":"PHP/5.2.16",
-                            "portLocation":"portal/index.html",
-                            "portConLen":"0",
-                            "portConType":"html/text",
-                            "portLanguage":"Servlet/2.5/JSP/2.11111111"
-                        }
-                    ]
-
-                },
-                {
-                    "portNum":"21",
-                    "portInfo":[
-                        {
-                            "portIntro":"HTTP/1.1 301 Moved Permanently",
-                            "portDate":"Thu,01 JUN 2017 01:49:11 GMT",
-                            "portServer":"Apache/2.0.63 (Unix) mod_ssl/2.0.63 Open SSL/0.90/PH",
-                            "portPower":"PHP/5.2.16",
-                            "portLocation":"portal/index.html",
-                            "portConLen":"0",
-                            "portConType":"html/text rrrrr",
-                            "portLanguage":"Servlet/2.5/JSP/2.1"
-                        }
-                    ]
-
-                },
-                {
-                    "portNum":"25",
-                    "portInfo":[
-                        {
-                            "portIntro":"HTTP/1.1 301 Moved Permanently ffffffffffff",
-                            "portDate":"Thu,01 JUN 2017 01:49:11 GMT",
-                            "portServer":"Apache/2.0.63 (Unix) mod_ssl/2.0.63 Open SSL/0.90/PH",
-                            "portPower":"PHP/5.2.16",
-                            "portLocation":"portal/index.html",
-                            "portConLen":"0",
-                            "portConType":"html/text",
-                            "portLanguage":"Servlet/2.5/JSP/2.1"
-                        }
-                    ]
-
-                },
-                {
-                    "portNum":"110",
-                    "portInfo":[
-                        {
-                            "portIntro":"HTTP/1.1 301 Moved Permanently",
-                            "portDate":"Thu,01 JUN 2017 01:49:11 GMT",
-                            "portServer":"Apache/2.0.63 (Unix) mod_ssl/2.0.63 Open SSL/0.90/PH",
-                            "portPower":"PHP/5.2.16",
-                            "portLocation":"portal/index.html",
-                            "portConLen":"55",
-                            "portConType":"html/text",
-                            "portLanguage":"Servlet/2.5/JSP/2.1"
-                        }
-                    ]
-
-                },
-                {
-                    "portNum":"993",
-                    "portInfo":[
-                        {
-                            "portIntro":"HTTP/1.1 301 Moved Permanently",
-                            "portDate":"Thu,01 JUN 2017 01:49:11 GMT",
-                            "portServer":"Apache/2.0.63 (Unix) mod_ssl/2.0.63 Open SSL/0.90/PH",
-                            "portPower":"PHP5555555/5.2.16",
-                            "portLocation":"portal/index.html",
-                            "portConLen":"0",
-                            "portConType":"html/text",
-                            "portLanguage":"Servlet/2.5/JSP/2.1"
-                        }
-                    ]
-
-                },
-                {
-                    "portNum":"24",
-                    "portInfo":[
-                        {
-                            "portIntro":"qqqqqHTTP/1.1 301 Moved Permanently",
-                            "portDate":"Thu,01 JUN 2017 01:49:11 GMT",
-                            "portServer":"Apache/2.0.63 (Unix) mod_ssl/2.0.63 Open SSL/0.90/PH",
-                            "portPower":"PHP/5.2.16",
-                            "portLocation":"portal/index.html",
-                            "portConLen":"0",
-                            "portConType":"html/text",
-                            "portLanguage":"Servlet/2.5/JSP/2.1"
-                        }
-                    ]
-
-                },
-                {
-                    "portNum":"443",
-                    "portInfo":[
-                        {
-                            "portIntro":"HTTP/1.1 301 Moved Permanently",
-                            "portDate":"Thu,01 JUN 2017 01:49:11 GMT",
-                            "portServer":"aaaaaaaaaaaaaaaApache/2.0.63 (Unix) mod_ssl/2.0.63 Open SSL/0.90/PH",
-                            "portPower":"PHP/5.2.16",
-                            "portLocation":"portal/index.html",
-                            "portConLen":"0",
-                            "portConType":"html/text",
-                            "portLanguage":"Servlet/2.5/JSP/2.1"
-                        }
-                    ]
-
-                },
-                {
-                    "portNum":"2525",
-                    "portInfo":[
-                        {
-                            "portIntro":"HTTP/1.1 301 Moved Permanently",
-                            "portDate":"Thu,01 JUN 2017 01:49:11 GMT",
-                            "portServer":"Apache/2.0.63 (Unix) mod_ssl/2.0.63 Open SSL/0.90/PH",
-                            "portPower":"PHP/5.2.16//////////////",
-                            "portLocation":"portal/index.html",
-                            "portConLen":"0",
-                            "portConType":"html/text",
-                            "portLanguage":"Servlet/2.5/JSP/2.1"
-                        }
-                    ]
-
-                }
-                ]
+            "location": "江苏省南京市禄口机场附近(120°E,120°N)"
+        }, {
+            "location": "江苏省南京市禄口机场附近(120°E,120°N)"
+        }, {
+            "location": "江苏省南京市禄口机场附近(120°E,120°N)"
+        }, {
+            "location": "江苏省南京市禄口机场附近(120°E,120°N)"
+        }, {
+            "location": "江苏省南京市禄口机场附近(120°E,120°N)"
+        }, {
+            "location": "江苏省南京市禄口机场附近(120°E,120°N)"
+        }, {
+            "location": "江苏省南京市禄口机场附近(120°E,120°N)"
+        }, {
+            "location": "江苏省南京市禄口机场附近(120°E,120°N)"
+        }, {
+            "location": "江苏省南京市禄口机场附近(120°E,120°N)"
+        }, {
+            "location": "江苏省南京市禄口机场附近(120°E,120°N)"
         },
-        {   
-            "searchName":"http://www.zcool.com.cn",
-            "inputPC":"172.36.64.32",
-            "location":"中国-南京",
-            "time":"2016/05/15 15:19",
-            "ports":[
-                {
-                    "portNum":"80",
-                    "portInfo":[
-                        {
-                            "portIntro":"HTTP/1.1 301 Moved Permanently",
-                            "portDate":"Thu,01 JUN 2017 01:49:11 GMT",
-                            "portServer":"Apache/2.0.63 (Unix) mod_ssl/2.0.63 Open SSL/0.90/PH",
-                            "portPower":"PHP/5.2.16",
-                            "portLocation":"portal/index.html",
-                            "portConLen":"0",
-                            "portConType":"html/text",
-                            "portLanguage":"Servlet/2.5/JSP/2.1"
-                        }
-                    ]
 
-                },
-                {
-                    "portNum":"21",
-                    "portInfo":[
-                        {
-                            "portIntro":"HTTP/1.1 301 Moved Permanently",
-                            "portDate":"Thu,01 JUN 2017 01:49:11 GMT",
-                            "portServer":"Apache/2.0.63 (Unix) mod_ssl/2.0.63 Open SSL/0.90/PH",
-                            "portPower":"PHP/5.2.16",
-                            "portLocation":"portal/index.html",
-                            "portConLen":"0",
-                            "portConType":"html/text",
-                            "portLanguage":"Servlet/2.5/JSP/2.1"
-                        }
-                    ]
+    ];
 
-                },
-                {
-                    "portNum":"25",
-                    "portInfo":[
-                        {
-                            "portIntro":"HTTP/1.1 301 Moved Permanently",
-                            "portDate":"Thu,01 JUN 2017 01:49:11 GMT",
-                            "portServer":"Apache/2.0.63 (Unix) mod_ssl/2.0.63 Open SSL/0.90/PH",
-                            "portPower":"PHP/5.2.16",
-                            "portLocation":"portal/index.html",
-                            "portConLen":"0",
-                            "portConType":"html/text",
-                            "portLanguage":"Servlet/2.5/JSP/2.1"
-                        }
-                    ]
+    $scope.searchLeftTable = function () {
 
-                }]
+    }
+    $scope.mapStyle = [
+        { elementType: 'geometry', stylers: [{ color: '#02172C' }] },
+        { elementType: 'labels.text.stroke', stylers: [{ visibility: 'off' }] },
+        { elementType: 'labels.text.fill', stylers: [{ color: '#63B9F5' }] },
+        {
+            featureType: 'administrative.locality',
+            elementType: 'labels.text.fill',
+            stylers: [{ visibility: 'off' }]
         },
-        {   
-            "searchName":"http://www.zcool.com.cn",
-            "inputPC":"172.36.64.32",
-            "location":"中国-南京",
-            "time":"2016/05/15 15:19",
-            "ports":[
-                {
-                    "portNum":"80",
-                    "portInfo":[
-                        {
-                            "portIntro":"HTTP/1.1 301 Moved Permanently",
-                            "portDate":"Thu,01 JUN 2017 01:49:11 GMT",
-                            "portServer":"Apache/2.0.63 (Unix) mod_ssl/2.0.63 Open SSL/0.90/PH",
-                            "portPower":"PHP/5.2.16",
-                            "portLocation":"portal/index.html",
-                            "portConLen":"0",
-                            "portConType":"html/text",
-                            "portLanguage":"Servlet/2.5/JSP/2.1"
-                        }
-                    ]
+        {
+            featureType: 'poi',
+            elementType: 'labels.icon',
+            stylers: [{ visibility: 'off' }]
+        },
 
-                },
-                {
-                    "portNum":"21",
-                    "portInfo":[
-                        {
-                            "portIntro":"HTTP/1.1 301 Moved Permanentlyyyyyyyy",
-                            "portDate":"Thu,01 JUN 2017 01:49:11 GMT",
-                            "portServer":"Apache/2.0.63 (Unix) mod_ssl/2.0.63 Open SSL/0.90/PH",
-                            "portPower":"PHP/5.2.16",
-                            "portLocation":"portal/index.html",
-                            "portConLen":"0",
-                            "portConType":"html/text",
-                            "portLanguage":"Servlet/2.5/JSP/2.1"
-                        }
-                    ]
+        {
+            featureType: 'road',
+            elementType: 'geometry',
+            stylers: [{ color: '#0C707A' }]
+        },
+        {
+            featureType: 'road',
+            elementType: 'labels.icon',
+            stylers: [{ visibility: 'off' }]
+        },
+        {
+            featureType: 'road',
+            elementType: 'labels.text.fill',
+            stylers: [{ color: '#0C707A' }]
+        },
+        {
+            featureType: 'road.highway',
+            elementType: 'geometry',
+            stylers: [{ color: '#0C707A' }]
+        },
+        {
+            featureType: 'road.highway',
+            elementType: 'geometry.stroke',
+            stylers: [{ color: '#0C707A' }]
+        },
+        {
+            featureType: 'road.highway',
+            elementType: 'labels.text.fill',
+            stylers: [{ visibility: 'off' }]
+        },
+        {
+            featureType: 'transit',
+            elementType: 'geometry',
+            stylers: [{ color: '#2f3948' }]
+        },
+        {
+            featureType: 'transit.station',
+            elementType: 'labels',
+            stylers: [{ visibility: 'off' }]
+        },
 
-                },
-                {
-                    "portNum":"25",
-                    "portInfo":[
-                        {
-                            "portIntro":"HTTP/1.1 301 Moved Permanently",
-                            "portDate":"Thu,01 JUN 2017 01:49:11 GMT",
-                            "portServer":"Apache/2.0.63 (Unix) mod_ssl/2.0.63 Open SSL/0.90/PH",
-                            "portPower":"PHP/5.2.16",
-                            "portLocation":"portal/index.html............",
-                            "portConLen":"0",
-                            "portConType":"html/text",
-                            "portLanguage":"Servlet/2.5/JSP/2.1"
-                        }
-                    ]
+        {
+            featureType: 'water',
+            elementType: 'geometry',
+            stylers: [{ color: '#17263c' }]
+        },
+        {
+            featureType: 'water',
+            elementType: 'labels.text.fill',
+            stylers: [{ color: '#515c6d' }]
+        },
+        {
+            featureType: 'water',
+            elementType: 'labels.text.stroke',
+            stylers: [{ color: '#17263c' }]
+        }
+    ];
 
+    jQuery.fn.slideLeftHide = function (speed, callback) {
+        this.animate({
+            width: "hide",
+            paddingLeft: "hide",
+            paddingRight: "hide",
+            marginLeft: "hide",
+            marginRight: "hide"
+        }, speed, callback);
+    };
+    jQuery.fn.slideLeftShow = function (speed, callback) {
+        this.animate({
+            width: "show",
+            paddingLeft: "show",
+            paddingRight: "show",
+            marginLeft: "show",
+            marginRight: "show"
+        }, speed, callback);
+    };
+
+    $scope.showOrHide = function ($index, $event) {
+        var tool = $(".slide-btn").eq($index).hasClass("turndown")
+
+        if (!tool) {
+            $(".slide-btn").eq($index).toggleClass("turndown")
+            $(".search-history-table").find(".outer-li").eq($index).find('.history-search-detail').slideDown('fast');
+            $(".search-history-table").find(".outer-li").eq($index).siblings(".outer-li").find('.history-search-detail').slideUp("fast")
+            $(".search-history-table").find(".outer-li").eq($index).siblings(".outer-li").find(".slide-btn").removeClass("turndown")
+        }
+        else {
+            $(".slide-btn").eq($index).toggleClass("turndown")
+            $(".search-history-table").find(".outer-li").eq($index).find('.history-search-detail').slideUp('fast');
+        }
+
+    }
+    $scope.midTitle = ""
+    $scope.location = [];
+    $scope.locationPot = [];
+    $scope.openRight = function ($index, $event, num) {
+        $scope.midTitle = num.phone_number;
+        $.ajax({
+            url: "../js/nubmer.json",
+            async: false,
+            // data:phone_number,
+            success: function (data) {//一条号码的数据
+                //$scope.allPath = data.path;
+                $scope.allPath = data.phonePaths[0].path
+                for (var i = 0; i < $scope.allPath.length; i++) {
+                    $scope.location.push($scope.allPath[i].location);
+                    $scope.locationPot.push($scope.allPath[i].coordinate);
                 }
-                ]
-        }
-    ]
-    
+            }
 
-       $scope.child="";
-       $scope.portDetail="";
-       $scope.init =function(){
-           var portDetail1 =""
-           for(var i=0;i<$scope.portData.length;i++){
-               //debugger
-           var portDetail1 = $scope.portData[i].ports[0].portInfo[0];
-           contentInit = "<ul><li>"+portDetail1.portIntro+"</li><li>Date:"+ portDetail1.portDate+"</li><li>Server:"+ portDetail1.portServer
-                           +"</li><li>X-Poweredby: "+ portDetail1.portPower+"</li><li>Location: "+portDetail1.portLocation
-                           +"</li><li>Content.length: "+portDetail1.portConLen+"</li><li>Content-type: "+portDetail1.portConType
-                           +"</li><li>Language: "+portDetail1.portLanguage+"</li></ul>"
-          $('.search-under-content-right').eq(i).append(contentInit);
-         }
-       }
-      
+        })
+        console.log($scope.location)
+        console.log($scope.locationPot)
 
-       $scope.show = function(outerIndex,$index){
-           $scope.child = $scope.portData[outerIndex].ports;
-           $(".port-num-5").eq(outerIndex).find('span').eq($index).css("background-color","#F0595C").siblings('span').css("background-color","#B3B3B3")
-           var portDetail = $scope.child[$index].portInfo[0];
-           var contentLi = "<ul><li>"+portDetail.portIntro+"</li><li>Date:"+ portDetail.portDate+"</li><li>Server:"+ portDetail.portServer
-                           +"</li><li>X-Poweredby: "+ portDetail.portPower+"</li><li>Location: "+portDetail.portLocation
-                           +"</li><li>Content.length: "+portDetail.portConLen+"</li><li>Content-type: "+portDetail.portConType
-                           +"</li><li>Language: "+portDetail.portLanguage+"</li></ul>"
-           $('.search-under-content-right').eq(outerIndex).empty();
-           $('.search-under-content-right').eq(outerIndex).append(contentLi);
-       }
+        $(".record2").slideLeftShow();
+        $("#searchmap").fadeIn()//css("visibility","visible");
+        initMap();
 
-    //搜索按钮
-    $scope.searchType = function(){
-        if($("#bugS").prop("checked")){
-            $('.search-under-content1').css("display","block");
-            $('.search-under-content2').css("display","none")
+    }
+
+    $scope.closeRight = function () {
+        $(".record2").slideLeftHide();
+        $("#searchmap").fadeOut()//css("visibility","visible");
+    }
+
+    function initMap() {
+        var lk = { lat: 22.279711, lng: 114.190544 };
+        var map = new google.maps.Map(document.getElementById("searchmap"), {
+            zoom: 12,
+            center: lk,
+            mapTypeId: "roadmap",
+            styles: $scope.mapStyle
+        });
+        var locationOb = new Object();
+        var locationGroup = [];
+        for (var i = 0; i < $scope.locationPot.length; i++) {
+            (function (i) {
+                var lo = $scope.locationPot[i].split(",");
+                locationOb.lat = parseFloat(lo[0]);
+                locationOb.lng = parseFloat(lo[1]);
+                locationGroup.push(locationOb);
+            })(i)
         }
-        else{
-            $('.search-under-content2').css("display","block");
-            $('.search-under-content1').css("display","none")
-             $scope.init();
+        console.log(locationGroup)
+
+        var flightPath = new google.maps.Polyline({
+            path: locationGroup,
+            geodesic: true,
+            strokeColor: '#DDD52E',
+            strokeOpacity: 1.0,
+            strokeWeight: 4
+        });
+        flightPath.setMap(map);
+        function setMarkers(map) {
+            var markerList = [locationGroup[0], locationGroup[locationGroup.length - 1]];
+            var markers = [];
+            var start = "../images/start.png";
+            var end = "../images/end.png";
+            //for(var i=0;i<markerList.length;i++){
+            markers.push(new google.maps.Marker({
+                position: markerList[0],
+                map: map,
+                icon: start
+            })
+            );
+            markers.push(new google.maps.Marker({
+                position: markerList[1],
+                map: map,
+                icon: end
+            })
+            );
         }
+        setMarkers(map);
+
     }
 
 
-    //切换按钮
-    $scope.searchBug = function(){
-        var bool = $("#bugS").prop('checked')
-        if(bool){
-            $('.search-top-part1').show();
-            $('.search-top-part2').hide();
-        }
-    }
-
-    $scope.searchProperty =function(){
-        var bol = $("#propertyS").prop("checked");
-        if(bol){
-            $('.search-top-part1').hide();
-            $('.search-top-part2').show();
-        }       
-        
-    }
 })

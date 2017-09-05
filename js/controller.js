@@ -1,16 +1,10 @@
 angular.module('controller',[
-    'homePageCtrl',
-    'traditionCtrl',
-    'agentCtrl',
-    'infoCtrl',
+    'index2Ctrl',
+    'userCtrl',
     'searchCtrl',
-    'logCtrl',
-    'toolsCtrl',
-    'secondScanCtrl',
-    'thirdScanCtrl',
-    'fourthScanCtrl',
-    'missionCreateCtrl',
-    'addTargetCtrl',
-    'addPluginsCtrl'
-    
+    'historyrecordCtrl',
+    'monitorCtrl',
+    'logoutCtrl',
+    'createCtrl',
+    'slCtrl'
 ]);
