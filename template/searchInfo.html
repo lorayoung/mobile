@@ -1,0 +1,42 @@
+<div class="personal-center record-list fn-left record1">
+    <div class="admin-person admin-his">
+        <div class="personal-center-header">搜索查询</div>
+        <div class="search-history-table" id="scroll">
+            <ul>
+                <div class="lishi">历史记录<input class="input-content fn-right table-search" id="" type="text" placeholder="搜索号码任务名" />
+                    <span class="search-btn-table small-search-history" ng-click="searchLeftTable()"></span></div>
+                <li ng-repeat="item in historyList track by $index" class="outer-li">
+                    <span class="mission-name">{{item.task_name}}</span>
+                    <span>{{item.status}}</span>
+                    <span>{{item.start_time}}</span>
+                    <span class="slide-btn" ng-click="showOrHide($index, $event)"></span>
+                    <div>
+                        <ul class="history-search-detail clearfix noShown">
+                            <li ng-repeat="num in item.phoneNumbers track by $index"><i>{{$index+1}}、</i><i>{{num.phone_number}}</i><i ng-click="openRight($index,$event,num)">历史轨迹</i>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+      
+</div> 
+<div class="personal-center record-list fn-left record2 noShown">
+    <div class="admin-person admin-his">
+        <div class="personal-center-header">号码:{{midTitle}} <span class="close-all" ng-click="closeRight()">×</span></div>
+        <div class="search-history-table">
+            <ul>
+                <li ng-repeat="route in location track by $index" class="outer-li">
+                    <span>{{$index+1}}</span>
+                    <span>{{route}}</span>   
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="personal-center record-list fn-left record3 noShown" id="searchmap" >
+    
+</div>
+
+

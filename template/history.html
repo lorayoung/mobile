@@ -1,0 +1,76 @@
+<div class="personal-center history-list" style="height:99%">
+    <div class="admin-person" style="height:95%">
+        <div class="personal-center-header">用户列表<input class="input-content fn-right search-table" id="" type="text" placeholder="搜索号码任务名" />
+            <span class="search-btn-table" ng-click="searchTable()"></span></div>
+        <div class="history-table">
+            <ul style="height:90%">
+                <li>
+                    <span>序号</span>
+                    <span>任务名</span>
+                    <span>开始时间</span>
+                    <span>结束时间</span>
+                    <span>状态</span>
+                    <span>操作</span>
+                </li>
+                <li ng-repeat="item in historyData track by $index" class="outer-li" ng-init="outerIndex = $index">
+                    <span>{{$index+1}}</span>
+                    <span class="outer-li-span">{{item.missionName}}</span>
+                    <span class="outer-li-span">{{item.startTime}}</span>
+                    <span class="outer-li-span">{{item.endTime}}</span>
+                    <span ng-style="{'color':'{{bgcArr[$index]}}'}">{{item.status}}</span>
+                    <span class="operation" ng-click="outOperate($index,$event)" ng-style="{'true':{'visibility':'visible'},'false':{'visibility':'hidden'}}[item.status!='running']">...
+                            <ul class="operate-box operate-set noShown waiceng">
+                               <li ng-click="waitEdit($index,$event)" ng-show="item.status=='waiting'">修改</li>
+                               <li ng-click="waitDel($index,$event)">删除</li>
+                               <li ng-show="item.status=='finish'" ng-click="outerPut(item.id)">导出</li>
+                               <li ng-show="item.status=='finish'" ng-click="outerMail(item.id)">邮件</li>                                    
+                            </ul>
+                        </span>
+                    <span ng-click="showOrHide($index)" class="slide-btn"></span>
+                    <ul class="history-detail clearfix noShown">
+                        <li ng-repeat="num in item.numbeGroup track by $index" class="inner-li"><i>{{$index+1}}、</i> <i>{{num}}</i><i class="operation inner-operate" ng-click="innerOperate($index,$event,outerIndex)"
+                                ng-style="{'true':{'visibility':'visible'},'false':{'visibility':'hidden'}}[item.status!='running']">...</i>
+                            <ul class="operate-box num-box noShown neiceng">
+                                <li ng-show="item.status=='waiting'" ng-click="innerEdit($index,$event,outerIndex)">修改</li>
+                                <li ng-click="innerDel($index,$event,outerIndex)">删除</li>
+                                <li ng-show="item.status=='finish'" ng-click="innerPut(num.id)">导出</li>
+                                <li ng-show="item.status=='finish'" ng-click="innerEmail(num.id)">邮件</li>
+                            </ul>
+                        </li>
+                        <li ng-if="item.status!='running'"><span class="add-number">+</span>
+                            <input type="text" id="addPhone">
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="mail noShown" id="mailbox">
+                <div class="form-group email-pad">
+                    <label class="col-sm-1 control-label" for="">收件人</label>
+                    <div class="col-sm-2">
+                        <input class="input-content" id="" type="email" placeholder="" />
+                    </div>
+
+                </div>
+                <div class="form-group send-commit">
+                    <button class="login-btn edit-commit" ng-click="sendEmail(itemId)">发送</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<ul class="pagationList">
+                <li ng-click="targetDtJump(1)">
+                    <i class="left-ctrl"></i>
+                </li>
+                <li ng-repeat="page in pageList" ng-class="{active: isActivePage(page)}" ng-click="selectPage(page)">
+                  {{ page }}
+              </li>
+                <li ng-click="targetDtJump(targetPages)">
+                    <i class="right-ctrl"></i>
+                </li>
+            </ul>-->
+    <ul class="pagationList clearfix">
+        <li class="page-choose">1</li>
+        <li>10</li>
+    </ul>
+</div>

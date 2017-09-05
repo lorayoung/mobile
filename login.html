@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/normal.css">
+    <link rel="stylesheet" href="css/public.css">
+    <title>手机定位指挥系统</title>
+</head>
+
+<body>
+    <div class="inner-content">
+        <div style="padding-top:10%">
+            <div class="login-box">
+                <form class="form form-horizontal width-100" role="form" name="loginForm">
+                    <div class="login-title">手机定位指挥系统</div>
+                    <div class="form-group">
+
+                        <div class="col-sm-4">
+                            <input class="input-content input-admin" id="userName" ng-model="userName" type="text" placeholder="用户名" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-sm-4">
+                            <input class="input-content input-password" id="userPassword" ng-model="userPassword" type="password" placeholder="密码" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="login-btn" ng-click="login()">登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="libs/jquery.min.js"></script>
+    <script src="js/fontSize.js"></script>
+    <script>
+    function login() {
+        alert(1)
+        var username = $("#userName").val();
+        var password = $("#userPassword").val();
+        location.href='user'
+        // $.ajax({
+        //     url: "login",
+        //     type: "POST",
+        //     data: {
+        //         name: username.trim(),
+        //         password: password.trim()
+        //     },
+        //     dataType: 'JSON',
+        //     success: function (data) {
+        //         if (data.code != 0) {
+        //             layer.msg('未知错误',{time:1000});
+        //         } else {
+        //             location.href='user'
+        //         }
+        //     },
+        //     error: function () {
+        //         layer.msg('未知错误',{time:1000});
+
+        //     }
+        // });
+
+    }</script>
+</body>
+
+</html>

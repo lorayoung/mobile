@@ -1,0 +1,168 @@
+<div class="top">
+    <div class="user-tabs1 clearfix fn-left" ng-init="vm.activeTab=1">
+        <span class="user-btn fn-left" ng-class="{choosed:vm.activeTab == 1}" ng-click="vm.activeTab = 1">区域预警
+            
+        </span>
+        <span class="user-btn fn-left" ng-class="{choosed:vm.activeTab == 2}" ng-click="vm.activeTab = 2">基站预警</span>
+    </div>
+</div>
+<div class="under-content map-map">
+    
+    <div class="map-show map-edit" ng-show="vm.activeTab ==1">
+        <div id="floating-panel">
+            <button ng-click="removeOverlay()" value="Remove overlay" class="btn btn-default">重新绘制</button>
+        </div>
+        <div class="personal-center map-set fn-left" id="allmap">
+        </div>
+        <div id="createMonitor">
+            <div class="personal-center fn-left mt-0">
+                <div class="personal-center-header">创建追踪对象<span class="close-btn fn-right" ng-click="closeModal()"></span></div>
+                <div class="modal-padding">
+                    <div class="clearfix">
+                        <label class="col-md-2 control-label" for="">选择时间</label>
+                        <div class="">
+                            <input class="input-content width-48" id="chooseTime" type="text" />
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="pt-20">选择任务</div>
+                        <div class="create-ul">
+
+                            <ul>
+                                <li><span><input type="checkbox" name="checkall" id="checkall" class="all-check" ng-click="checkAll()">全选</span><span>任务名</span></li>
+                                <li ng-repeat="item in historyList track by $index" class="outer-li">
+                                    <span><input type="checkbox" name="checksingle" id="{{item.missionId}}"></span>
+                                    <span>{{item.missionName}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--<ul class="pagationList">
+                <li ng-click="targetDtJump(1)">
+                    <i class="left-ctrl"></i>
+                </li>
+                <li ng-repeat="page in pageList" ng-class="{active: isActivePage(page)}" ng-click="selectPage(page)">
+                  {{ page }}
+              </li>
+                <li ng-click="targetDtJump(targetPages)">
+                    <i class="right-ctrl"></i>
+                </li>
+            </ul>-->
+                <ul class="pagationList clearfix">
+                    <li class="page-choose">1</li>
+                    <li>10</li>
+                </ul>
+                <div class="form-group mission-btn clearfix mission-btn-group">
+                    <button class="login-btn mission-commit bgnone" ng-click="closeModal()">取消</button>
+                    <button class="login-btn mission-commit" ng-click="submitMission()">确定</button>
+                </div>
+            </div>
+        </div>
+        <div class="leftbar" id="leftbar">
+            <div class="personal-center fn-left">
+                <div class="personal-center-header">追踪对象</div>
+                <div class="modal-padding">
+                    <div class="clearfix">
+                        <label class="control-label" for="">所选时间</label>
+                        <div class="">
+                            {{chooseTime}}
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="pt-20">所选任务</div>
+                        <div class="create-ul">
+
+                            <ul>
+                                <li ng-repeat="item in chooseGroup track by $index" class="outer-li">
+                                    <span>{{item.missionName}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="map-show" ng-show="vm.activeTab ==2">
+        <div id="floating-panel">
+            <button ng-click="traceMission()" value="Remove overlay" class="btn btn-default">创建追踪对象</button>
+        </div>
+        <div class="personal-center map-set fn-left" id="allmap1">
+
+        </div>
+        <div id="createMonitor1">
+            <div class="personal-center fn-left mt-0">
+                <div class="personal-center-header">创建追踪对象<span class="close-btn fn-right" ng-click="closeModal()"></span></div>
+                <div class="modal-padding">
+                    <div class="clearfix">
+                        <label class="col-md-2 control-label" for="">选择时间</label>
+                        <div class="">
+                            <input class="input-content width-48" id="chooseTime1" type="text" />
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="pt-20">选择任务</div>
+                        <div class="create-ul">
+
+                            <ul>
+                                <li><span><input type="checkbox" name="checkall" id="checkall" class="all-check" ng-click="checkAll()">全选</span><span>任务名</span></li>
+                                <li ng-repeat="item in historyList track by $index" class="outer-li">
+                                    <span><input type="checkbox" name="checksingle" id="{{item.missionId}}"></span>
+                                    <span>{{item.missionName}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--<ul class="pagationList">
+                <li ng-click="targetDtJump(1)">
+                    <i class="left-ctrl"></i>
+                </li>
+                <li ng-repeat="page in pageList" ng-class="{active: isActivePage(page)}" ng-click="selectPage(page)">
+                  {{ page }}
+              </li>
+                <li ng-click="targetDtJump(targetPages)">
+                    <i class="right-ctrl"></i>
+                </li>
+            </ul>-->
+                <ul class="pagationList clearfix">
+                    <li class="page-choose">1</li>
+                    <li>10</li>
+                </ul>
+                <div class="form-group mission-btn clearfix mission-btn-group">
+                    <button class="login-btn mission-commit bgnone" ng-click="closeModal()">取消</button>
+                    <button class="login-btn mission-commit" ng-click="submitMission1()">确定</button>
+                </div>
+            </div>
+        </div>
+        <div class="leftbar" id="leftbar1">
+            <div class="personal-center fn-left">
+                <div class="personal-center-header">追踪对象</div>
+                <div class="modal-padding">
+                    <div class="clearfix">
+                        <label class="control-label" for="">所选时间</label>
+                        <div class="">
+                            {{chooseTime1}}
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="pt-20">所选任务</div>
+                        <div class="create-ul">
+
+                            <ul>
+                                <li ng-repeat="item in chooseGroup track by $index" class="outer-li">
+                                    <span>{{item.missionName}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

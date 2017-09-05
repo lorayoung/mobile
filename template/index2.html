@@ -1,0 +1,78 @@
+<div class="outer">
+    <div class="top-nav">
+        <span class="logo">手机定位系统</span>
+        <ul class="clearfix top-list">
+            <li ui-sref="index.create"><i>运动轨迹</i></li>
+            <li ui-sref="index.monitor"><i>重点区域监控</i></li>
+            <li ui-sref="index.search"><i>搜索查询</i></li>
+            <li ui-sref="index.historyrecord"><i>历史记录</i></li>
+            <li ui-sref="index.user" class="active-click"><i>用户信息</i></li>
+            <li ui-sref="index.logout"><i>系统设置</i></li>
+            <div class="current-count">当前账号: <span class="acount-name">普通用户</span></div>
+        </ul>
+    </div>
+
+    <span class="user-btn-create fn-left" ng-click="createMisssion()">新建任务<span class="user-btn-inner">+</span></span>
+    <div class="input-s">
+<input class="input-content fn-right search-location" id="search-location" value="22.279711,114.190544" type="text" placeholder="22.279711,114.190544"
+    />
+    <span class="search-btn" ng-click="searchLoaction()"></span>
+    </div>
+    
+    <div class="personal-center create-list noShown" id="missionModal">
+        <div class="admin-person">
+            <div class="personal-center-header">新建<span class="close-btn fn-right" ng-click="closeModal()"></span></div>
+            <div class="mission-table">
+
+                <div class="form-group clearfix">
+                    <label class="col-md-2 control-label" for="">任务名</label>
+                    <div class="">
+                        <input class="input-content width-48" id="" type="text" placeholder="" />
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-md-2 control-label" for="">电话号码</label>
+                    <div class="">
+                        <input class="input-content width-48 add-one" id="" type="text" placeholder="" />
+                        <span class="side-btn" ng-click="addMore()">批量添加</span>
+                    </div>
+
+                </div>
+                <div class="form-group clearfix noShown add-more">
+                    <label class="col-md-2 control-label" for=""></label>
+                    <div class="">
+                        <textarea class="input-content width-48 textarea-set" id="" type="text" placeholder="号码之间以逗号隔开"></textarea>
+                    </div>
+
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-md-2 control-label" for="">循环时间</label>
+                    <div class="">
+                        <input class="input-content width-48" id="" type="text" placeholder="" />
+                        <span class="side-btn mr-27">分钟</span>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-md-2 control-label" for="">开始时间</label>
+                    <div class="">
+                        <input class="input-content width-48" type="text" placeholder="" id="from" />
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-md-2 control-label" for="">结束时间</label>
+                    <div class="">
+                        <input class="input-content width-48" type="text" placeholder="" id="to" />
+                    </div>
+                </div>
+                <div class="form-group mission-btn clearfix">
+                    <button class="login-btn mission-commit bgnone" ng-click="closeModal()">取消</button>
+                    <button class="login-btn mission-commit" ng-click="submitTarget()">确定</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div ui-view class="under-content">
+
+    </div>
+</div>
